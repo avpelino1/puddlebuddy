@@ -1,7 +1,8 @@
 package com.pelino.springboot.model.jdbc;
 
-import com.pelino.springboot.model.LocationDAO;
+import com.pelino.springboot.model.dao.LocationDAO;
 import com.pelino.springboot.model.Location;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
@@ -13,6 +14,7 @@ public class JDBCLocationDAO implements LocationDAO {
 
     private JdbcTemplate jdbc;
 
+    @Autowired
     public JDBCLocationDAO(DataSource dataSource){
         this.jdbc = new JdbcTemplate(dataSource);
     }

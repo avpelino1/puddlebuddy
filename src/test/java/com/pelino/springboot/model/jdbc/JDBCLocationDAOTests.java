@@ -1,13 +1,13 @@
 package com.pelino.springboot.model.jdbc;
 
 import com.pelino.springboot.model.Location;
+import com.pelino.springboot.model.dao.LocationDAO;
 import org.junit.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class JDBCLocationDAOTests {
@@ -19,7 +19,7 @@ public class JDBCLocationDAOTests {
     private Location TEST_LOCATION = new Location();
 
     private static SingleConnectionDataSource dataSource;
-    private JDBCLocationDAO dao;
+    private LocationDAO dao;
     private JdbcTemplate jdbc = new JdbcTemplate(dataSource);
 
     @BeforeClass
