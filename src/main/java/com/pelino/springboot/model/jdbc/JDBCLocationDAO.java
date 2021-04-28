@@ -2,21 +2,24 @@ package com.pelino.springboot.model.jdbc;
 
 import com.pelino.springboot.model.dao.LocationDAO;
 import com.pelino.springboot.model.Location;
+import com.pelino.springboot.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JDBCLocationDAO implements LocationDAO {
 
+    private WeatherService service;
     private JdbcTemplate jdbc;
 
-    @Autowired
-    public JDBCLocationDAO(DataSource dataSource){
-        this.jdbc = new JdbcTemplate(dataSource);
+    public JDBCLocationDAO(JdbcTemplate jdbc){
+        this.jdbc = new JdbcTemplate();
     }
 
     @Override
@@ -27,6 +30,7 @@ public class JDBCLocationDAO implements LocationDAO {
         while (row.next()) {
             location = mapRowToLocation(row);
         }
+        service.getWeather(location);
         return location;
     }
 
@@ -39,6 +43,9 @@ public class JDBCLocationDAO implements LocationDAO {
             Location location = new Location();
             mapRowToLocation(row);
             allLocations.add(location);
+        }
+        for(Location location : allLocations){
+            service.getWeather(location);
         }
         return allLocations;
     }

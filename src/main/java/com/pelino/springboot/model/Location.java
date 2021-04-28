@@ -1,47 +1,35 @@
 package com.pelino.springboot.model;
 
+import java.util.List;
+
 public class Location {
 
-    //datebase
+    //database
     private Long id;
     private String name;
-    private Double latitude;
+
     private Double longitude;
+    private Double latitude;
 
     //oneCall
    private String timezone;
-   private Long timezomeOffset;
+   private Long timezoneOffset;
    private CurrentWeather current;
-   private HourlyWeather hourly;
-   private DailyWeather daily;
+   private List<HourlyWeather> hourly;
+   private List<DailyWeather> daily;
    private Alerts alert;
 
     //historical
-    private CurrentWeather historicalCurrent;
-    private HourlyWeather historicalHourly;
+    private List<CurrentWeather> historicalWeather;
 
     public Location() { }
 
-    public Location(Long id, String name, Double latitude, Double longitude){
+    public Location(Long id, String name, Double latitude, Double longitude) {
         this.id = id;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
     }
-
-    public Location(Long id, String name, Double latitude, Double longitude, String timezone, Long timezomeOffset, CurrentWeather current, HourlyWeather hourly, DailyWeather daily, Alerts alert) {
-        this.id = id;
-        this.name = name;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.timezone = timezone;
-        this.timezomeOffset = timezomeOffset;
-        this.current = current;
-        this.hourly = hourly;
-        this.daily = daily;
-        this.alert = alert;
-    }
-
 
     public Long getId() { return id; }
 
@@ -81,12 +69,12 @@ public class Location {
         this.timezone = timezone;
     }
 
-    public Long getTimezomeOffset() {
-        return timezomeOffset;
+    public Long getTimezoneOffset() {
+        return timezoneOffset;
     }
 
-    public void setTimezomeOffset(Long timezomeOffset) {
-        this.timezomeOffset = timezomeOffset;
+    public void setTimezoneOffset(Long timezoneOffset) {
+        this.timezoneOffset = timezoneOffset;
     }
 
     public CurrentWeather getCurrent() {
@@ -97,19 +85,19 @@ public class Location {
         this.current = current;
     }
 
-    public HourlyWeather getHourly() {
+    public List<HourlyWeather> getHourly() {
         return hourly;
     }
 
-    public void setHourly(HourlyWeather hourly) {
+    public void setHourly(List<HourlyWeather> hourly) {
         this.hourly = hourly;
     }
 
-    public DailyWeather getDaily() {
+    public List<DailyWeather> getDaily() {
         return daily;
     }
 
-    public void setDaily(DailyWeather daily) {
+    public void setDaily(List<DailyWeather> daily) {
         this.daily = daily;
     }
 
@@ -121,19 +109,12 @@ public class Location {
         this.alert = alert;
     }
 
-    public CurrentWeather getHistoricalCurrent() {
-        return historicalCurrent;
+    public List<CurrentWeather> getHistoricalWeather() {
+        return historicalWeather;
     }
 
-    public void setHistoricalCurrent(CurrentWeather historicalCurrent) {
-        this.historicalCurrent = historicalCurrent;
+    public void setHistoricalWeather(List<CurrentWeather> historicalWeather) {
+        this.historicalWeather = historicalWeather;
     }
 
-    public HourlyWeather getHistoricalHourly() {
-        return historicalHourly;
-    }
-
-    public void setHistoricalHourly(HourlyWeather historicalHourly) {
-        this.historicalHourly = historicalHourly;
-    }
 }

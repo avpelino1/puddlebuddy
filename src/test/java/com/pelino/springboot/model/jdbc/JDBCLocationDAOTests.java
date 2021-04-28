@@ -40,7 +40,7 @@ public class JDBCLocationDAOTests {
     public void setUp(){
         String sql = "INSERT INTO location (name, latitude, longitude) VALUES (?, ?, ?)";
         jdbc.update(sql, TEST_NAME, TEST_LAT, TEST_LONG);
-        dao = new JDBCLocationDAO(dataSource);
+        dao = new JDBCLocationDAO(jdbc);
 
         String sqlID = "SELECT location_id FROM location WHERE name = ?";
         SqlRowSet row = jdbc.queryForRowSet(sqlID, TEST_NAME);
